@@ -2,10 +2,59 @@
  * jquery-levelup - jQuery Plugin to draw animated increment and decrement to a number styled from video games.
  * URL: ...
  * Author: Patrick Trinkle <https://github.com/pstrinkle>
- * Version: 0.1.0
+ * Version: 0.1
  * License: Apache 2
  */
 (function ($) {
+    function LevelUp(config) {
+        this.init(config);
+    }
+
+    LevelUp.prototype = {
+        /**
+         * This is the only required option.
+         * @type {number}
+         */
+        start: 0,
+
+        /**
+         * This is the current value.
+         * @type {number}
+         */
+        value: 0,
+
+        //-------------------------------------- protected properties and methods --------------------------------------
+        /**
+         * @protected
+         */
+        constructor: LevelUp,
+
+        /**
+         * Container element. Should be passed into constructor config
+         * @protected
+         * @type {jQuery}
+         */
+        el: null,
+
+        /**
+         * Init/re-init the object
+         * @param {object} config - Config
+         */
+        init: function(config) {
+            $.extend(this, config);
+        },
+
+        getValue: function() {
+            return this.value;
+        },
+
+        setValue: function(newValue) {
+            this.value = newValue;
+        }
+    }
+    
+    //-------------------------------------------- Initiating jQuery plugin --------------------------------------------
+
     /**
      * Set up an animated incrementer/decrementer.
      * 
@@ -52,7 +101,7 @@
                 $x.css('top', e + 'px');
                 setTimeout(function() {
                     $x.remove();
-                    $tw.text($tw.data(dataName)); // so it goes down correctly
+                    $tw.text($tw.data(dataName).getValue()); // so it goes down correctly
                 }, 250);
             }, 100);
         }
@@ -77,7 +126,7 @@
                 $x.css('top', e + 'px');
                 setTimeout(function() {
                     $x.remove();
-                    $tw.text($tw.data(dataName));
+                    $tw.text($tw.data(dataName).getValue());
                 }, 250);
             }, 100);
         }
@@ -90,18 +139,16 @@
             if (configOrCommand === 'increment') {
                 /* you want to update this here in case they call it a lot. */
                 return this.each(function() {
-                    var curr = parseInt($(this).data(dataName));
-                    var next = curr + commandArgument;
+                    var next = $(this).data(dataName).getValue() + commandArgument;
 
-                    $(this).data(dataName, next);
+                    $(this).data(dataName).setValue(next);
                     animateIncrement($(this), commandArgument);
                 });
             } else if (configOrCommand === 'decrement') {
                 return this.each(function() {
-                    var curr = parseInt($(this).data(dataName));
-                    var next = curr - commandArgument;
+                    var next = $(this).data(dataName).getValue() - commandArgument;
 
-                    $(this).data(dataName, next);
+                    $(this).data(dataName).setValue(next);
                     animateDecrement($(this), commandArgument);
                 });
             }
@@ -114,18 +161,13 @@
 
             if (instance) {
                 /* they've set up some data values for us already to use. */
+                instance.init(config);
             } else {
                 var initialConfig = $.extend({}, el.data());
                 config = $.extend(initialConfig, config);
-          
-                /* should have defaults. */
-                if (config.start == undefined) {
-                    el.data(dataName, 0);
-                    el.text('0');
-                } else {
-                    el.data(dataName, config.start);
-                    el.text(config.start);
-                }
+                config.el = el;
+                instance = new LevelUp(config);
+                el.data(dataName, instance);
             }
         });
     };
