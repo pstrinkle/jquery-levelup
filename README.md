@@ -16,17 +16,17 @@ Usage
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="/libs/jquery-levelup/levelup.js"></script>
 
-<span>select <span style="font-weight: bold;" id='twitter_cnt'>0</span></span>
+<span>counter <span style="font-weight: bold;" id='the_cnt'>0</span></span>
 
 <script>
-    $('#twitter_cnt').levelup({'start' : 0});
+    $('#the_cnt').levelup({'start' : 0});
 
     $('#incrementBtn').on('click', function(event) {
-        $('#twitter_cnt').levelup('increment', 1);
+        $('#the_cnt').levelup('increment', 1);
         $(this).blur();
     });
     $('#decrementBtn').on('click', function(event) {
-        $('#twitter_cnt').levelup('decrement', 1);
+        $('#the_cnt').levelup('decrement', 1);
         $(this).blur();
     });
 </script>
