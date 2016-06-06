@@ -40,3 +40,6 @@ You should specify options like in usage example above.
 | ---- | ---- | ---- |
 | start | Start value for span. <br> Default: `0` |
 
+License
+-------
+[Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
