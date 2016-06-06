@@ -20,7 +20,7 @@
   </head>
   <body>
     <section class="page-header">
-      <h1 class="project-name">Jquery-levelup</h1>
+      <h1 class="project-name">jquery-levelup</h1>
       <h2 class="project-tagline">Simple +1/-1 Animation similar to point accumulation in a video game</h2>
       <a href="https://github.com/pstrinkle/jquery-levelup" class="btn">View on GitHub</a>
       <a href="https://github.com/pstrinkle/jquery-levelup/zipball/master" class="btn">Download .zip</a>
@@ -40,20 +40,23 @@
 &lt;span&gt;counter &lt;span style="font-weight: bold;" id='the_cnt'&gt;0&lt;/span&gt;&lt;/span&gt;
 
 &lt;script&gt;
-    $('#the_cnt').levelup({'start' : 0});
+    var $tc = $('#the_cnt');
+
+    $tc.levelup({'start' : 0});
 
     $('#incrementBtn').on('click', function(event) {
-        $('#the_cnt').levelup('increment', 1);
+        $tc.levelup('increment', 1);
         $(this).blur();
     });
     $('#decrementBtn').on('click', function(event) {
-        $('#the_cnt').levelup('decrement', 1);
+        $tc.levelup('decrement', 1);
         $(this).blur();
     });
 &lt;/script&gt;
-      </pre>
+</pre>
       
       <h3>Usage</h3>
+      <div>
       <table class="table">
         <thead>
           <tr>
@@ -64,7 +67,28 @@
         <tbody>
           <tr>
             <td>start</td>
-            <td>Start value for span. <br/>Default:<pre>0</pre></td>
+            <td>Start value for span. Default:<code>0</code></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <br />
+      
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Methods</th>
+            <th>Param</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>'increment'</code></td>
+            <td>integer by which to increment</td>
+          </tr>
+          <tr>
+            <td><code>'decrement'</code></td>
+            <td>absolute value of integer by which to decrement (always positive)</td>
           </tr>
         </tbody>
       </table>
@@ -72,7 +96,14 @@
       <h3>Demos</h3>
       <p>I will put a few demos here.</p>
       <h4>Basic Demo</h4>
-      <p><span id='basic_1'></span> - <button id='incrementBtn'>increment</button> - <button id='decrementBtn'>decrement</button></p>
+      <div class="btn-area">
+        <p>
+          <span id='basic_1'></span> - 
+          <button id='incrementBtn' class="btn2">increment</button> - 
+          <button id='decrementBtn' class="btn2">decrement</button>
+        </p>
+      </div>
+      <pre class="prettyprint lang-js">$('#basic_1').levelup('increment', 1);</pre>
       <script>
           $(function() {
               $('#basic_1').levelup({'start' : 0});
@@ -89,7 +120,16 @@
       </script>
 
       <h4>Increment by bigger value</h4>
-      <p><span id='basic_2'></span> - <button id='incrementBtn_2'>increment</button> - <button id='decrementBtn_2'>decrement</button></p>
+      <div class="btn-area">
+        <p>
+          <span id='basic_2'></span> - 
+          <button id='incrementBtn_2' class="btn2">increment</button> - 
+          <button id='decrementBtn_2' class="btn2">decrement</button>
+        </p>
+      </div>
+      <pre class="prettyprint lang-js">
+$('#basic_2').levelup('increment', 10);
+$('#basic_2').levelup('decrement', 7);</pre>
       <script>
           $(function() {
               $('#basic_2').levelup({'start' : 0});
@@ -104,6 +144,9 @@
               });
           });
       </script>
+
+      <h3>License</h3>
+      <p><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></p>
 
       <footer class="site-footer">
         <!-- <span class="site-footer-owner"><a href="https://github.com/pstrinkle/jquery-levelup">Jquery-levelup</a> is maintained by <a href="https://github.com/pstrinkle">pstrinkle</a>.</span> -->

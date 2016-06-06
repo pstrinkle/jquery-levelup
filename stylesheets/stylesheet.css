@@ -59,6 +59,34 @@ a {
   background-color: #159957;
   background-image: linear-gradient(120deg, #155799, #159957); }
 
+.btn2 {
+  display: inline-block;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 0.3rem;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+}
+
+.btn2:hover {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-area {
+  color: #fff;
+  padding-left: 2rem;
+  padding-top: 1rem;
+  background-color: #159957;
+  background-image: linear-gradient(120deg, #155799, #159957);
+}
+
 @media screen and (min-width: 64em) {
   .page-header {
     padding: 5rem 6rem; } }
