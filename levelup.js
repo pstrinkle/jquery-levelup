@@ -177,6 +177,7 @@
                 config.el = el;
                 instance = new LevelUp(config);
                 el.data(dataName, instance);
+                el.text(instance.start);
             }
         });
     };
