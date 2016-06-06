@@ -1,5 +1,6 @@
 /**
- * jquery-levelup - jQuery Plugin to draw animated increment and decrement to a number styled from video games.
+ * jquery-levelup - jQuery Plugin to draw animated increment and decrement to a
+ *  number styled from video games.
  * URL: ...
  * Author: Patrick Trinkle <https://github.com/pstrinkle>
  * Version: 0.1
@@ -23,7 +24,7 @@
          */
         value: 0,
 
-        //-------------------------------------- protected properties and methods --------------------------------------
+        //----------------------- protected properties and methods -------------
         /**
          * @protected
          */
@@ -53,7 +54,7 @@
         }
     }
     
-    //-------------------------------------------- Initiating jQuery plugin --------------------------------------------
+    //----------------------- Initiating jQuery plugin -------------------------
 
     /**
      * Set up an animated incrementer/decrementer.
@@ -61,10 +62,13 @@
      * @param configOrCommand - Config object or command name
      *     Example: { ... };
      *     you may set any public property (see above);
-     *     you may use .levelup('increment', incrementWith) to increment the value
-     *     you may use .levelup('decrement', decrementWith) to decrement the value
+     *     you may use .levelup('increment', incrementWith) to increment the 
+     *     value
+     *     you may use .levelup('decrement', decrementWith) to decrement the 
+     *     value
      *
-     * @param commandArgument - Some commands (like 'increment') may require an argument
+     * @param commandArgument - Some commands (like 'increment') may require an 
+     *     argument
      */
     $.fn.levelup = function(configOrCommand, commandArgument) {
         var dataName = 'levelup';
@@ -84,10 +88,12 @@
         function animateDecrement($tw, update) {
             var p = $tw.position();
             var h = $tw.height();
-            var w = $tw.width();            
-            var nl = p.left + w; // start it all the way to the left, then figure out its width
-            var nt = p.top; // they have the same height, so just position it at the same place.
-            var $x = $('<span>', {text: "-" + update, style: getStyle(nt, nl) });
+            var w = $tw.width();
+            // start it all the way to the left, then figure out its width
+            var nl = p.left + w;
+            // they have the same height, so just position it at the same place.
+            var nt = p.top;
+            var $x = $('<span>', {text: "-" + update, style: getStyle(nt, nl)});
             // width is 0 until it's rendered.
             $tw.parent().append($x);
             var realWidth = $x.width();
@@ -101,7 +107,8 @@
                 $x.css('top', e + 'px');
                 setTimeout(function() {
                     $x.remove();
-                    $tw.text($tw.data(dataName).getValue()); // so it goes down correctly
+                    /* equivalent to a volatile pointer read */
+                    $tw.text($tw.data(dataName).getValue());
                 }, 250);
             }, 100);
         }
@@ -110,9 +117,11 @@
             var p = $tw.position();
             var h = $tw.height();
             var w = $tw.width();
-            var nl = p.left + w; // start it all the way to the left, then figure out its width
-            var nt = p.top - h; // they have the same height, so just position it above by the height.
-            var $x = $('<span>', {text: "+" + update, style: getStyle(nt, nl) });
+            // start it all the way to the left, then figure out its width
+            var nl = p.left + w;
+            // they have the same height, so just position it above by the height.
+            var nt = p.top - h;
+            var $x = $('<span>', {text: "+" + update, style: getStyle(nt, nl)});
             // width is 0 until it's rendered.
             $tw.parent().append($x);
             var realWidth = $x.width();
@@ -168,6 +177,7 @@
                 config.el = el;
                 instance = new LevelUp(config);
                 el.data(dataName, instance);
+                el.text(instance.start);
             }
         });
     };
