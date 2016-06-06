@@ -40,18 +40,20 @@
 &lt;span&gt;counter &lt;span style="font-weight: bold;" id='the_cnt'&gt;0&lt;/span&gt;&lt;/span&gt;
 
 &lt;script&gt;
-    $('#the_cnt').levelup({'start' : 0});
+    var $tc = $('#the_cnt');
+
+    $tc.levelup({'start' : 0});
 
     $('#incrementBtn').on('click', function(event) {
-        $('#the_cnt').levelup('increment', 1);
+        $tc.levelup('increment', 1);
         $(this).blur();
     });
     $('#decrementBtn').on('click', function(event) {
-        $('#the_cnt').levelup('decrement', 1);
+        $tc.levelup('decrement', 1);
         $(this).blur();
     });
 &lt;/script&gt;
-      </pre>
+</pre>
       
       <h3>Usage</h3>
       <div>

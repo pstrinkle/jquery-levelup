@@ -19,14 +19,15 @@ Usage
 <span>counter <span style="font-weight: bold;" id='the_cnt'>0</span></span>
 
 <script>
-    $('#the_cnt').levelup({'start' : 0});
+    var $tc = $('#the_cnt');
+    $tc.levelup({'start' : 0});
 
     $('#incrementBtn').on('click', function(event) {
-        $('#the_cnt').levelup('increment', 1);
+        $tc.levelup('increment', 1);
         $(this).blur();
     });
     $('#decrementBtn').on('click', function(event) {
-        $('#the_cnt').levelup('decrement', 1);
+        $tc.levelup('decrement', 1);
         $(this).blur();
     });
 </script>
@@ -39,6 +40,11 @@ You should specify options like in usage example above.
 | Option  | Description |
 | ---- | ---- | ---- |
 | start | Start value for span. <br> Default: `0` |
+
+| Methods  | Params |
+| ---- | ---- | ---- |
+| `increment` | integer by which to increment |
+| `decrement` | absolute value of integer by which to decrement (always positive) |
 
 License
 -------
