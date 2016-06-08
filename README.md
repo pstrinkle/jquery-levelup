@@ -40,8 +40,8 @@ You should specify options like in usage example above.
 | Name | Type | Default | Description |
 | ---- | ---- | ---- | ---- |
 | start | integer | `0` | Start value for span. |
-| incrementer.bold | boolean | true | Whether the incrementer is bold |
-| decrementer.bold | boolean | true | Whether the decrementer is bold |
+| incrementer|decrementer.bold | boolean | true | Whether the incrementer|decrementer is bold |
+| incrementer|decrementer.color | CSS color string | null | Change the incrementer|decrementer's text color |
 
 
 | Methods  | Params |
