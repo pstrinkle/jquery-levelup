@@ -87,10 +87,10 @@
              * I was already technically just building a giant string...
              */
             var styles = ["font-weight:bold",
-                             "position:absolute",
-                             "top:" + top + "px",
-                             "left:" + left + "px",
-                             "z-index:999"
+                          "position:absolute",
+                          "top:" + top + "px",
+                          "left:" + left + "px",
+                          "z-index:999"
             ];
 
             return styles.join(";");
