@@ -197,13 +197,13 @@
 
                 /* We don't want a true deep copy of the whole prototype. */
                 if (config.incrementer) {
-                	var inc = $.extend(true, {}, LevelUp.prototype.incrementer, config.incrementer);
-                	$.extend(config.incrementer, inc);
+                    var inc = $.extend(true, {}, LevelUp.prototype.incrementer, config.incrementer);
+                    $.extend(config.incrementer, inc);
                 }
 
                 if (config.decrementer) {
-                	var dec = $.extend(true, {}, LevelUp.prototype.decrementer, config.decrementer);
-                	$.extend(config.decrementer, dec);
+                    var dec = $.extend(true, {}, LevelUp.prototype.decrementer, config.decrementer);
+                    $.extend(config.decrementer, dec);
                 }
 
                 instance = new LevelUp(config);
