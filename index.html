@@ -60,14 +60,30 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Option</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Default</th>
             <th>Description</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>start</td>
-            <td>Start value for span. Default:<code>0</code></td>
+            <td>integer</td>
+            <td><code>0</code></td>
+            <td>Start value for span.</td>
+          </tr>
+          <tr>
+            <td><i>incrementer</i>.bold</td>
+            <td>boolean</td>
+            <td>true</td>
+            <td>Whether the incrementer is bold</td>
+          </tr>
+          <tr>
+            <td><i>decrementer</i>.bold</td>
+            <td>boolean</td>
+            <td>true</td>
+            <td>Whether the decrementer is bold</td>
           </tr>
         </tbody>
       </table>
@@ -140,6 +156,34 @@ $('#basic_2').levelup('decrement', 7);</pre>
               });
               $('#decrementBtn_2').on('click', function(event) {
                   $('#basic_2').levelup('decrement', 7);
+                  $(this).blur();
+              });
+          });
+      </script>
+
+      <h4>Non-bold option</h4>
+      <div class="btn-area">
+        <p>
+          <span id='basic_3'></span> - 
+          <button id='incrementBtn_3' class="btn2">increment</button> - 
+          <button id='decrementBtn_3' class="btn2">decrement</button>
+        </p>
+      </div>
+      <pre class="prettyprint lang-js">
+$('#basic_3').levelup({'start' : 0, 'incrementer' : {'bold' : false}});
+$('#basic_3').levelup('increment', 10);
+$('#basic_3').levelup('decrement', 7);</pre>
+      <script>
+          $(function() {
+              $('#basic_3').levelup({'start' : 0,
+            	                     'incrementer' : {'bold' : false}});
+
+              $('#incrementBtn_3').on('click', function(event) {
+                  $('#basic_3').levelup('increment', 10);
+                  $(this).blur();
+              });
+              $('#decrementBtn_3').on('click', function(event) {
+                  $('#basic_3').levelup('decrement', 7);
                   $(this).blur();
               });
           });
