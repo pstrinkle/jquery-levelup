@@ -17,6 +17,13 @@
     <script src="levelup.js"></script>
     
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <style>
+    .fun_times {
+      background-color: lightblue;
+      color: #FFA500;
+      box-shadow: 0 0 10px 10px #fff;
+    }
+    </style>
   </head>
   <body>
     <section class="page-header">
@@ -41,7 +48,6 @@
 
 &lt;script&gt;
     var $tc = $('#the_cnt');
-
     $tc.levelup({'start' : 0});
 
     $('#incrementBtn').on('click', function(event) {
@@ -84,6 +90,12 @@
             <td>CSS color string</td>
             <td>null</td>
             <td>Change the incrementer|decrementer's text color</td>
+          </tr>
+          <tr>
+            <td><i>incrementer|decrementer</i>.class</td>
+            <td>string</td>
+            <td>null</td>
+            <td>Add a class to the incrementer|decrementer element</td>
           </tr>
         </tbody>
       </table>
@@ -176,7 +188,7 @@ $('#basic_3').levelup('decrement', 7);</pre>
       <script>
           $(function() {
               $('#basic_3').levelup({'start' : 0,
-            	                     'incrementer' : {'bold' : false}});
+                                     'incrementer' : {'bold' : false}});
 
               $('#incrementBtn_3').on('click', function(event) {
                   $('#basic_3').levelup('increment', 10);
@@ -207,6 +219,38 @@ $('#basic_4').levelup('increment', 10);
 
               $('#incrementBtn_4').on('click', function(event) {
                   $('#basic_4').levelup('increment', 10);
+                  $(this).blur();
+              });
+          });
+      </script>
+
+      <h4>Controlling the class</h4>
+      <div class="btn-area">
+        <p>
+          <span id='basic_5'></span> - 
+          <button id='incrementBtn_5' class="btn2">increment</button>
+        </p>
+      </div>
+      <pre class="prettyprint lang-css">
+&lt;style&gt;
+    .fun_times {
+      background-color: lightblue;
+      color: #FFA500;
+      box-shadow: 0 0 10px 10px #fff;
+    }
+&lt;/style&gt;
+      </pre>
+      <pre class="prettyprint lang-js">
+$('#basic_5').levelup({'start' : 0, 'incrementer' : {'class' : 'fun_times'}});
+$('#basic_5').levelup('increment', 10);
+</pre>
+      <script>
+          $(function() {
+              $('#basic_5').levelup({'start' : 0,
+                                     'incrementer' : {'class' : 'fun_times'}});
+
+              $('#incrementBtn_5').on('click', function(event) {
+                  $('#basic_5').levelup('increment', 10);
                   $(this).blur();
               });
           });

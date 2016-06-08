@@ -27,11 +27,13 @@
         incrementer : {
             bold: true,
             color: null,
+            class: null,
         },
 
         decrementer : {
             bold: true,
             color: null,
+            class: null,
         },
 
         //----------------------- protected properties and methods -------------
@@ -130,6 +132,9 @@
                 var nt = p.top - h;
                 var s = getStyle(nt, nl, instance.incrementer);
                 var $x = $('<span>', {text: "+" + update, style: s});
+                if (instance.incrementer.class) {
+                    $x.addClass(instance.incrementer.class);
+                }
             } else {
                 /* 
                  * They have the same height, so just position it at the same 
@@ -138,6 +143,9 @@
                 var nt = p.top;
                 var s = getStyle(nt, nl, instance.decrementer);
                 var $x = $('<span>', {text: update, style: s});
+                if (instance.decrementer.class) {
+                    $x.addClass(instance.decrementer.class);
+                }
             }
 
             // width is 0 until it's rendered.
