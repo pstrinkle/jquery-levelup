@@ -1,7 +1,7 @@
 /**
  * jquery-levelup - jQuery Plugin to draw animated increment and decrement to a
  *  number styled from video games.
- * URL: ...
+ * URL: http://pstrinkle.github.com/jquery-levelup
  * Author: Patrick Trinkle <https://github.com/pstrinkle>
  * Version: 0.1
  * License: Apache 2
