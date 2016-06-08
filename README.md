@@ -6,9 +6,8 @@ _This is my first jquery plugin, and it's definitely under construction.  So che
 Plans
 -----
 
-1. Make it not always use a bolded font for the indicator.
-2. Allow it to accept parameters for colorization of indicator.
-3. Allow it to accept formatting for the indicator.
+1. Allow it to accept formatting for the indicator.
+2. It is presently always adding a span element, assuming the accumulator is a span, it could attempt to mimic that value's HTML DOM type
 
 Usage
 -----
