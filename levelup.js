@@ -26,12 +26,14 @@
 
         incrementer : {
             bold: true,
+            color: null,
         },
-        
+
         decrementer : {
             bold: true,
+            color: null,
         },
-        
+
         //----------------------- protected properties and methods -------------
         /**
          * @protected
@@ -89,7 +91,7 @@
          * Should it always be bold? or is that incorrect, I can't recall yet.
          * I should have it check if the thing beneath it is bold?
          */
-        function getStyle(top, left, bold) {
+        function getStyle(top, left, settings) {
             /* 
              * Yes it's less optimal, why am I building it every time?
              * I was already technically just building a giant string...
@@ -100,8 +102,12 @@
                           "z-index:999"
             ];
 
-            if (bold) {
+            if (settings.bold) {
                 styles.push("font-weight:bold");
+            }
+
+            if (settings.color) {
+                styles.push("color:" + settings.color);
             }
 
             return styles.join(";");
@@ -115,14 +121,14 @@
             var w = $tw.width();
             // start it all the way to the left, then figure out its width
             var nl = p.left + w;
-
+            
             if (update >= 0) {
                 /* 
                  * They have the same height, so just position it above by the 
                  * height.
                  */
                 var nt = p.top - h;
-                var s = getStyle(nt, nl, instance.incrementer.bold);
+                var s = getStyle(nt, nl, instance.incrementer);
                 var $x = $('<span>', {text: "+" + update, style: s});
             } else {
                 /* 
@@ -130,7 +136,7 @@
                  * place.
                  */
                 var nt = p.top;
-                var s = getStyle(nt, nl, instance.decrementer.bold);
+                var s = getStyle(nt, nl, instance.decrementer);
                 var $x = $('<span>', {text: update, style: s});
             }
 
@@ -188,6 +194,18 @@
                 var initialConfig = $.extend({}, el.data());
                 config = $.extend(initialConfig, config);
                 config.el = el;
+
+                /* We don't want a true deep copy of the whole prototype. */
+                if (config.incrementer) {
+                	var inc = $.extend(true, {}, LevelUp.prototype.incrementer, config.incrementer);
+                	$.extend(config.incrementer, inc);
+                }
+
+                if (config.decrementer) {
+                	var dec = $.extend(true, {}, LevelUp.prototype.decrementer, config.decrementer);
+                	$.extend(config.decrementer, dec);
+                }
+
                 instance = new LevelUp(config);
                 el.data(dataName, instance);
 
