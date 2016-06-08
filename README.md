@@ -37,9 +37,12 @@ Options
 -------
 You should specify options like in usage example above.
 
-| Option  | Description |
-| ---- | ---- | ---- |
-| start | Start value for span. <br> Default: `0` |
+| Name | Type | Default | Description |
+| ---- | ---- | ---- | ---- |
+| start | integer | `0` | Start value for span. |
+| incrementer.bold | boolean | true | Whether the incrementer is bold |
+| decrementer.bold | boolean | true | Whether the decrementer is bold |
+
 
 | Methods  | Params |
 | ---- | ---- | ---- |

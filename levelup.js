@@ -24,6 +24,14 @@
          */
         value: 0,
 
+        incrementer : {
+            bold: true,
+        },
+        
+        decrementer : {
+            bold: true,
+        },
+        
         //----------------------- protected properties and methods -------------
         /**
          * @protected
@@ -81,23 +89,26 @@
          * Should it always be bold? or is that incorrect, I can't recall yet.
          * I should have it check if the thing beneath it is bold?
          */
-        function getStyle(top, left) {
+        function getStyle(top, left, bold) {
             /* 
              * Yes it's less optimal, why am I building it every time?
              * I was already technically just building a giant string...
              */
-            var styles = ["font-weight:bold",
-                          "position:absolute",
+            var styles = ["position:absolute",
                           "top:" + top + "px",
                           "left:" + left + "px",
                           "z-index:999"
             ];
 
+            if (bold) {
+                styles.push("font-weight:bold");
+            }
+
             return styles.join(";");
         }
 
         function animateUpdate(instance, update) {
-        	/* transition to this */
+            /* transition to this */
             var $tw = instance.el;
             var p = $tw.position();
             var h = $tw.height();
@@ -106,13 +117,21 @@
             var nl = p.left + w;
 
             if (update >= 0) {
-                // they have the same height, so just position it above by the height.
+                /* 
+                 * They have the same height, so just position it above by the 
+                 * height.
+                 */
                 var nt = p.top - h;
-                var $x = $('<span>', {text: "+" + update, style: getStyle(nt, nl)});
+                var s = getStyle(nt, nl, instance.incrementer.bold);
+                var $x = $('<span>', {text: "+" + update, style: s});
             } else {
-                // they have the same height, so just position it at the same place.
+                /* 
+                 * They have the same height, so just position it at the same 
+                 * place.
+                 */
                 var nt = p.top;
-                var $x = $('<span>', {text: update, style: getStyle(nt, nl)});
+                var s = getStyle(nt, nl, instance.decrementer.bold);
+                var $x = $('<span>', {text: update, style: s});
             }
 
             // width is 0 until it's rendered.
