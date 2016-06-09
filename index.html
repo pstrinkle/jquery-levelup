@@ -97,6 +97,18 @@
             <td>null</td>
             <td>Add a class to the incrementer|decrementer element</td>
           </tr>
+          <tr>
+            <td>showThousands</td>
+            <td>boolean</td>
+            <td><code>false</code></td>
+            <td>Whether to use a thousands separate everywhere.</td>
+          </tr>
+          <tr>
+            <td>thousandSep</td>
+            <td>strings</td>
+            <td><code>,</code></td>
+            <td>The thousand separator to use.</td>
+          </tr>
         </tbody>
       </table>
       </div>
@@ -251,6 +263,28 @@ $('#basic_5').levelup('increment', 10);
 
               $('#incrementBtn_5').on('click', function(event) {
                   $('#basic_5').levelup('increment', 10);
+                  $(this).blur();
+              });
+          });
+      </script>
+
+      <h4>Controlling the thousand separator</h4>
+      <div class="btn-area">
+        <p>
+          <span id='basic_6'></span> - 
+          <button id='incrementBtn_6' class="btn2">increment</button>
+        </p>
+      </div>
+      <pre class="prettyprint lang-js">
+$('#basic_6').levelup({'start' : 1111, 'showThousands' : true});
+$('#basic_6').levelup('increment', 5555);
+</pre>
+      <script>
+          $(function() {
+              $('#basic_6').levelup({'start' : 1111, 'showThousands' : true});
+
+              $('#incrementBtn_6').on('click', function(event) {
+                  $('#basic_6').levelup('increment', 5555);
                   $(this).blur();
               });
           });

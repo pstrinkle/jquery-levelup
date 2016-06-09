@@ -39,6 +39,8 @@ You should specify options like in usage example above.
 | incrementer/decrementer.bold | boolean | true | Whether the incrementer|decrementer is bold |
 | incrementer/decrementer.color | CSS color string | null | Change the incrementer|decrementer's text color |
 | incrementer/decrementer.class | string | null | Add a class to the incrementer|decrementer element |
+| showThousands | boolean | false | Whether to use a thousands separate everywhere |
+| thousandSep | string | "," | The thousand separator to use |
 
 | Methods  | Params |
 | ---- | ---- | ---- |
