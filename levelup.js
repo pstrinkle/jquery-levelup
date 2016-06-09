@@ -24,12 +24,31 @@
          */
         value: 0,
 
+        /**
+         * Whether we separate numbers in thousands.
+         * @type {boolean}
+         */
+        showThousands: false,
+        /**
+         * The thousands separator to use.
+         * @tyep {string}
+         */
+        thousandSep: ',',
+
+        /**
+         * These are the settings for the incrementer.
+         * @type {object}
+         */
         incrementer : {
             bold: true,
             color: null,
             class: null,
         },
 
+        /**
+         * These are the settings for the decrementer
+         * @type {object}
+         */
         decrementer : {
             bold: true,
             color: null,
@@ -89,6 +108,10 @@
                      '-o-transition' : 'all 0.25s',
                      'transition' : 'all 0.25s'};
 
+        function numberWithCommas(x, sep) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, sep);
+        }
+
         /* 
          * Should it always be bold? or is that incorrect, I can't recall yet.
          * I should have it check if the thing beneath it is bold?
@@ -129,6 +152,11 @@
                  * They have the same height, so just position it above by the 
                  * height.
                  */
+
+                if (instance.showThousands) {
+                    update = numberWithCommas(update, instance.thousandSep);
+                }
+
                 var nt = p.top - h;
                 var s = getStyle(nt, nl, instance.incrementer);
                 var $x = $('<span>', {text: "+" + update, style: s});
@@ -140,6 +168,11 @@
                  * They have the same height, so just position it at the same 
                  * place.
                  */
+
+                if (instance.showThousands) {
+                    update = numberWithCommas(update, instance.thousandSep);
+                }
+
                 var nt = p.top;
                 var s = getStyle(nt, nl, instance.decrementer);
                 var $x = $('<span>', {text: update, style: s});
@@ -161,8 +194,14 @@
                 $x.css('top', e + 'px');
                 setTimeout(function() {
                     $x.remove();
+
                     /* equivalent to a volatile pointer read */
-                    $tw.text($tw.data(dataName).getValue());
+                    var value = $tw.data(dataName).getValue();
+                    if (instance.showThousands) {
+                        value = numberWithCommas(value, instance.thousandSep);
+                    }
+
+                    $tw.text(value);
                 }, 250);
             }, 100);
         }
@@ -217,6 +256,9 @@
                 instance = new LevelUp(config);
                 el.data(dataName, instance);
 
+                if (instance.showThousands) {
+                    instance.start = numberWithCommas(instance.start, instance.thousandSep);
+                }
                 el.text(instance.start);
             }
         });
