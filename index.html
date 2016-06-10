@@ -136,6 +136,8 @@
       <h3>Demos</h3>
       <p>I will put a few demos here.</p>
       <h4>Basic Demo</h4>
+      <p>It was originally written as just a small JavaScript animation and this version
+      is effectively what I started with before adding features.</p>
       <div class="btn-area">
         <p>
           <span id='basic_1'></span> - 
@@ -160,6 +162,7 @@
       </script>
 
       <h4>Increment by bigger value</h4>
+      <p>The increment and decrement methods allow for other values.</p>
       <div class="btn-area">
         <p>
           <span id='basic_2'></span> - 
@@ -186,6 +189,7 @@ $('#basic_2').levelup('decrement', 7);</pre>
       </script>
 
       <h4>Non-bold option</h4>
+      <p>The incrementer and decrementer are bold by default, but you can turn that off</p>
       <div class="btn-area">
         <p>
           <span id='basic_3'></span> - 
@@ -214,6 +218,8 @@ $('#basic_3').levelup('decrement', 7);</pre>
       </script>
 
       <h4>Controlling the color</h4>
+      <p>You can specify the text color.  This can be done via a class as well, but
+      this is for those who simply wish to control one aspect of it.</p>
       <div class="btn-area">
         <p>
           <span id='basic_4'></span> - 
@@ -237,6 +243,7 @@ $('#basic_4').levelup('increment', 10);
       </script>
 
       <h4>Controlling the class</h4>
+      <p>You can style the incrementer/decrementer however you like via a class.</p>
       <div class="btn-area">
         <p>
           <span id='basic_5'></span> - 
@@ -268,7 +275,8 @@ $('#basic_5').levelup('increment', 10);
           });
       </script>
 
-      <h4>Controlling the thousand separator</h4>
+      <h4>Controlling the thousands separator</h4>
+      <p>You can set the thousands separator as anything you want.  It is off by default.</p>
       <div class="btn-area">
         <p>
           <span id='basic_6'></span> - 
@@ -285,6 +293,30 @@ $('#basic_6').levelup('increment', 5555);
 
               $('#incrementBtn_6').on('click', function(event) {
                   $('#basic_6').levelup('increment', 5555);
+                  $(this).blur();
+              });
+          });
+      </script>
+
+      <h4>Accumulator is not span - still must be inline display type</h4>
+      <p>If you don't use a span, which is inlined, you'll need to manually inline the type.  This is 
+      a temporary fix that relates to where it lines up the animation.</p>
+      <div class="btn-area">
+        <div>
+          <h3 id='basic_7' style='display:inline'></h3> 
+          <button id='incrementBtn_7' class="btn2">increment</button>
+        </div>
+      </div>
+      <pre class="prettyprint lang-js">
+$('#basic_7').levelup({'start' : 1111, 'showThousands' : true});
+$('#basic_7').levelup('increment', 5555);
+</pre>
+      <script>
+          $(function() {
+              $('#basic_7').levelup({'start' : 1111, 'showThousands' : true});
+
+              $('#incrementBtn_7').on('click', function(event) {
+                  $('#basic_7').levelup('increment', 5555);
                   $(this).blur();
               });
           });
