@@ -242,7 +242,7 @@
                 return this.each(function() {
                     var instance = $(this).data(dataName);
                     instance.setValue(instance.start);
-                    el.text(instance.start);
+                    instance.el.text(instance.start);
                 });
             }
         }
