@@ -10,7 +10,7 @@ Usage
 -----
 ```html
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="/libs/jquery-levelup/levelup.js"></script>
+<script src="/libs/jquery-levelup/jquery.levelup.min.js"></script>
 
 <span>counter <span style="font-weight: bold;" id='the_cnt'>0</span></span>
 

@@ -94,63 +94,12 @@
 
         setValue: function(newValue) {
             this.value = newValue;
-        }
-    }
-    
-    //----------------------- Initiating jQuery plugin -------------------------
+        },
 
-    /**
-     * Set up an animated incrementer/decrementer.
-     * 
-     * @param configOrCommand - Config object or command name
-     *     Example: { ... };
-     *     you may set any public property (see above);
-     *     you may use .levelup('increment', incrementWith) to increment the 
-     *     value
-     *     you may use .levelup('decrement', decrementWith) to decrement the 
-     *     value
-     *
-     * @param commandArgument - Some commands (like 'increment') may require an 
-     *     argument
-     */
-    $.fn.levelup = function(configOrCommand, commandArgument) {
-        var dataName = 'levelup';
-        var trans = {'-webkit-transition' : 'all 0.25s',
-                     '-moz-transition' : 'all 0.25s',
-                     '-o-transition' : 'all 0.25s',
-                     'transition' : 'all 0.25s'};
+        dataName : 'levelup',
 
-        function numberWithCommas(x, sep) {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, sep);
-        }
-
-        /* 
-         * Should it always be bold? or is that incorrect, I can't recall yet.
-         * I should have it check if the thing beneath it is bold?
-         */
-        function getStyle(top, left, settings) {
-            /* 
-             * Yes it's less optimal, why am I building it every time?
-             * I was already technically just building a giant string...
-             */
-            var styles = ["position:absolute",
-                          "top:" + top + "px",
-                          "left:" + left + "px",
-                          "z-index:999"
-            ];
-
-            if (settings.bold) {
-                styles.push("font-weight:bold");
-            }
-
-            if (settings.color) {
-                styles.push("color:" + settings.color);
-            }
-
-            return styles.join(";");
-        }
-
-        function animateUpdate(instance, update) {
+        animateUpdate : function (update) {
+        	var instance = this;
             /* transition to this */
             var $tw = instance.el;
             var p = $tw.position();
@@ -208,7 +157,7 @@
                     $x.remove();
 
                     /* equivalent to a volatile pointer read */
-                    var value = $tw.data(dataName).getValue();
+                    var value = $tw.data(instance.dataName).getValue();
                     if (instance.showThousands) {
                         value = numberWithCommas(value, instance.thousandSep);
                     }
@@ -216,12 +165,67 @@
                     $tw.text(value);
                 }, 250);
             }, 100);
+        },
+    }
+
+    var trans = {'-webkit-transition' : 'all 0.25s',
+                 '-moz-transition' : 'all 0.25s',
+                 '-o-transition' : 'all 0.25s',
+                 'transition' : 'all 0.25s'};
+
+    function numberWithCommas(x, sep) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, sep);
+    }
+    
+    /* 
+     * Should it always be bold? or is that incorrect, I can't recall yet.
+     * I should have it check if the thing beneath it is bold?
+     */
+    function getStyle(top, left, settings) {
+        /* 
+         * Yes it's less optimal, why am I building it every time?
+         * I was already technically just building a giant string...
+         */
+        var styles = ["position:absolute",
+                      "top:" + top + "px",
+                      "left:" + left + "px",
+                      "z-index:999"
+        ];
+
+        if (settings.bold) {
+            styles.push("font-weight:bold");
         }
 
+        if (settings.color) {
+            styles.push("color:" + settings.color);
+        }
+
+        return styles.join(";");
+    }
+    
+    //----------------------- Initiating jQuery plugin -------------------------
+
+    /**
+     * Set up an animated incrementer/decrementer.
+     * 
+     * @param configOrCommand - Config object or command name
+     *     Example: { ... };
+     *     you may set any public property (see above);
+     *     you may use .levelup('increment', incrementWith) to increment the 
+     *     value
+     *     you may use .levelup('decrement', decrementWith) to decrement the 
+     *     value
+     *
+     * @param commandArgument - Some commands (like 'increment') may require an 
+     *     argument
+     */
+    $.fn.levelup = function(configOrCommand, commandArgument) {
         /* It is possible that the text will be updated out of sequence
          * because of the timeouts, that you might not end up with the
          * right value, so the right value is basically always in data.
          */
+    	var dataName = LevelUp.prototype.dataName;
+
         if (typeof configOrCommand == 'string') {
             commandArgument = parseInt(commandArgument); /* just in case. */
 
@@ -230,13 +234,13 @@
                 return this.each(function() {
                     var instance = $(this).data(dataName);
                     instance.setValue(instance.getValue() + commandArgument);
-                    animateUpdate(instance, commandArgument);
+                    instance.animateUpdate(commandArgument);
                 });
             } else if (configOrCommand === 'decrement') {
                 return this.each(function() {
                     var instance = $(this).data(dataName);
                     instance.setValue(instance.getValue() - commandArgument);
-                    animateUpdate(instance, -1 * commandArgument);
+                    instance.animateUpdate(-1 * commandArgument);
                 });
             } else if (configOrCommand === 'reset') {
                 return this.each(function() {
