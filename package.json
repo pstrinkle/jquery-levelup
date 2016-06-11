@@ -1,17 +1,26 @@
 {
-    "name": "jquery-levelup",
-    "version": "1.0.0",
-    "author": "Patrick Trinkle <pstrink@gmail.com>",
-    "description": "Simple +1/-1 Animation similar to point accumulation in a video game.",
-    "license": "Apache 2.0",
-    "keywords": [
-        "jquery",
-    ],
-    "dependencies": {},
-    "devDependencies": {},
-    "scripts": {},
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/pstrinkle/jquery-levelup.git"
-    }
+  "name": "jquery-levelup",
+  "version": "1.0.0",
+  "description": "Simple +1/-1 Animation similar to point accumulation in a video game.",
+  "main": "dist/jquery-levelup.js",
+  "scripts": {
+  },
+  "dependencies": {
+    "jquery": ">=1.11.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pstrinkle/jquery-levelup.git"
+  },
+  "keywords": [
+    "jquery-plugin",
+    "ecosystem:jquery",
+    "animation"
+  ],
+  "author": "Patrick Trinkle",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/pstrinkle/jquery-levelup/issues"
+  },
+  "homepage": "https://github.com/pstrinkle/jquery-levelup#readme"
 }
