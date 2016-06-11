@@ -239,9 +239,10 @@
                     animateUpdate(instance, -1 * commandArgument);
                 });
             } else if (configOrCommand === 'reset') {
-            	return this.each(function() {
+                return this.each(function() {
                     var instance = $(this).data(dataName);
-                    instance.setValue(commandArgument);
+                    instance.setValue(instance.start);
+                    el.text(instance.start);
                 });
             }
         }
