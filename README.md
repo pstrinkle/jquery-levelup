@@ -3,6 +3,9 @@ Simple +1/-1 Animation similar to point accumulation in a video game.
 
 [on npm](https://www.npmjs.com/package/jquery-levelup)
 
+[![Latest release](https://img.shields.io/github/release/pstrinkle/jquery-levelup.svg)](https://github.com/pstrinkle/jquery-levelup/releases/latest)
+[![npm](https://img.shields.io/npm/v/jquery-levelup.svg)](https://www.npmjs.com/package/jquery-levelup)
+
 Plans
 -----
 
