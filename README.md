@@ -1,6 +1,8 @@
 # jquery-levelup
 Simple +1/-1 Animation similar to point accumulation in a video game.
 
+[on npm](https://www.npmjs.com/package/jquery-levelup)
+
 Plans
 -----
 
