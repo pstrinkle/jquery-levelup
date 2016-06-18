@@ -330,6 +330,34 @@ $('#basic_7').levelup('increment', 5555);
           });
       </script>
 
+      <h4>Value Accessor</h4>
+      <p>You'll want to use this to get the value instead of reading the text,
+      because the text could be out of date.</p>
+      <div class="btn-area">
+        <p>
+          <span id='basic_8'></span> - 
+          <button id='incrementBtn_8' class="btn2">increment</button> - 
+          <button id='readBtn_8' class="btn2">Get Value</button> : 
+          <span id='valueResult_8'></span>
+        </p>
+      </div>
+      <pre class="prettyprint lang-js">$('#basic_8').levelup('get');</pre>
+      <script>
+          $(function() {
+              $('#basic_8').levelup({'start' : 0});
+
+              $('#incrementBtn_8').on('click', function(event) {
+                  $('#basic_8').levelup('increment', 1);
+                  $(this).blur();
+              });
+              $('#readBtn_8').on('click', function(event) {
+                  var value = $('#basic_8').levelup('get');
+                  $('#valueResult_8').text(value);
+                  $(this).blur();
+              });
+          });
+      </script>
+
       <h3>License</h3>
       <p><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></p>
 
