@@ -3,7 +3,7 @@
  *  number styled from video games.
  * URL: http://pstrinkle.github.com/jquery-levelup
  * Author: Patrick Trinkle <https://github.com/pstrinkle>
- * Version: 1.0.0
+ * Version: 1.0.1
  * Copyright 2016 Patrick Trinkle
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -247,6 +247,11 @@
                     var instance = $(this).data(dataName);
                     instance.setValue(instance.start);
                     instance.el.text(instance.start);
+                });
+            } else if (configOrCommand === 'get') {
+            	return this.each(function() {
+                    var instance = $(this).data(dataName);
+                    return instance.getValue();
                 });
             }
         }

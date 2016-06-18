@@ -52,6 +52,7 @@ You should specify options like in usage example above.
 | `increment` | integer by which to increment |
 | `decrement` | absolute value of integer by which to decrement (always positive) |
 | `reset` | |
+| `get` | | Returns the current value after all pending animations are completed.
 
 License
 -------
